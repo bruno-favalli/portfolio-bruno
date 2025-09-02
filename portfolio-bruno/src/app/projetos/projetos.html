@@ -1,0 +1,45 @@
+<h2>Meus Projetos</h2>
+
+<div class="cards-container">
+  <div class="project-card" *ngFor="let projeto of projetos">
+    <div class="card-image">
+      <img [src]="projeto.imagem || 'assets/project-placeholder.png'" alt="{{ projeto.titulo }}">
+    </div>
+    <div class="card-content">
+      <h3>{{ projeto.titulo }}</h3>
+      <p>{{ projeto.descricao }}</p>
+      <div class="tech-tags">
+        <span *ngFor="let tech of projeto.tecnologias">{{ tech }}</span>
+      </div>
+      <p><b>Meu papel:</b> {{ projeto.papel }}</p>
+      <p>{{ projeto.resultados }}</p>
+      <div class="card-actions">
+        <a *ngIf="projeto.linkCodigo" [href]="projeto.linkCodigo" target="_blank" class="btn">Código</a>
+        <span 
+          *ngIf="projeto.videoLocal"
+          class="btn preview-icon"
+          (mouseenter)="abrirModal(projeto.videoLocal, $event)"
+          (mouseleave)="fecharModal()">
+          👁️ Preview
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal de preview -->
+<div
+  #videoModal
+  *ngIf="modalVisivel"
+  class="modal-video-container"
+  [style.left.px]="modalLeft"
+  [style.top.px]="modalTop"
+  (mouseleave)="fecharModal()"
+  (mouseenter)="cancelarFechamento()"
+>
+  <div class="modal-video-content">
+    <video controls>
+      <source [src]="videoAtual" type="video/mp4" />
+      Seu navegador não suporta o elemento de vídeo.
+    </video>
+  </div>
+</div>

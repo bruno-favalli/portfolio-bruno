@@ -1,0 +1,71 @@
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f4f8fb;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #0001;
+    min-width: 150px;
+    max-width: 200px;
+    transition: transform 0.2s;
+  }
+  
+  .skill-card img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.5em;
+  }
+  .skill-nome {
+    font-size: 1.12rem;
+    color: #1976d2;
+    font-weight: bold;
+    margin-bottom: 0.9em;
+  }
+  
+  .barra-nivel {
+    width: 110px;
+    height: 13px;
+    background: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0.5em;
+  }
+  
+  .barra-preenchida {
+    height: 100%;
+    background: linear-gradient(90deg, #1976d2 60%, #53a9ff 100%);
+    transition: width 0.8s;
+    border-radius: 8px;
+  }
+  
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    width: 110px;
+    margin-top: 0.1em;
+    font-size: 0.98rem;
+  }
+  
+  .skill-label {
+    color: #145aaa;
+    font-weight: 600;
+  }
+  
+  .skill-porcentagem {
+    color: #595959;
+    font-size: 0.98rem;
+  }
+  .skill-card:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 8px 24px #1976d215;
+  }
+  

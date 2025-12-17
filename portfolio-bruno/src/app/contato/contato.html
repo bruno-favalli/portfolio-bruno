@@ -1,7 +1,25 @@
 <h2>Contato</h2>
-<form>
-  <label>Nome: <input type="text"></label><br>
-  <label>Email: <input type="email"></label><br>
-  <label>Mensagem: <textarea></textarea></label><br>
-  <button type="submit">Enviar</button>
+<form [formGroup]="contatoForm" (ngSubmit)="onSubmit()">
+  
+  <label for="nome">Nome:</label>
+  <input type="text" id="nome" formControlName="nome">
+  <div *ngIf="contatoForm.get('nome')?.invalid && contatoForm.get('nome')?.touched" class="error-message">
+    O nome é obrigatório.
+  </div>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" formControlName="email">
+  <div *ngIf="contatoForm.get('email')?.invalid && contatoForm.get('email')?.touched" class="error-message">
+    <span *ngIf="contatoForm.get('email')?.errors?.['required']">O email é obrigatório.</span>
+    <span *ngIf="contatoForm.get('email')?.errors?.['email']">Por favor, insira um email válido.</span>
+  </div>
+  
+  <label for="mensagem">Mensagem:</label>
+  <textarea id="mensagem" formControlName="mensagem"></textarea>
+  <div *ngIf="contatoForm.get('mensagem')?.invalid && contatoForm.get('mensagem')?.touched" class="error-message">
+    <span *ngIf="contatoForm.get('mensagem')?.errors?.['required']">A mensagem é obrigatória.</span>
+    <span *ngIf="contatoForm.get('mensagem')?.errors?.['minlength']">A mensagem precisa ter no mínimo 10 caracteres.</span>
+  </div>
+
+  <button type="submit" [disabled]="contatoForm.invalid">Enviar</button>
 </form>

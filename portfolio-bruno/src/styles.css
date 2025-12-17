@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+/* src/styles.css */
+
+/* :root define as variáveis para o tema padrão (light) */
+:root {
+    --cor-fundo: #eff3f6;
+    --cor-fundo-card: #fff;
+    --cor-texto-primario: #222;
+    --cor-texto-secundario: #444;
+    --cor-primaria: #1976d2;
+    --cor-primaria-hover: #1565c0;
+    --sombra-card: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Define as variáveis para o tema escuro */
+  body.dark {
+    --cor-fundo: #121212;
+    --cor-fundo-card: #1e1e1e;
+    --cor-texto-primario: #e0e0e0;
+    --cor-texto-secundario: #b0b0b0;
+    --cor-primaria: #53a9ff;
+    --cor-primaria-hover: #6ab7ff;
+    --sombra-card: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Aplica as variáveis ao body */
+  body {
+    background: var(--cor-fundo);
+    color: var(--cor-texto-primario);
+  }

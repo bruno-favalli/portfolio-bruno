@@ -1,5 +1,5 @@
 h2 {
-    color: #1565c0;
+    color: var(--cor-primaria);
     margin-bottom: 1rem;
     font-size: 2rem;
   }
@@ -12,7 +12,7 @@ h2 {
   }
   label {
     font-size: 1rem;
-    color: #333;
+    color: var(--cor-texto-secundario);
   }
   input, textarea {
     border: 1px solid #bdbdbd;
@@ -26,7 +26,7 @@ h2 {
   button {
     margin-top: 0.6em;
     padding: 0.7em;
-    background: #1976d2;
+    background: var(--cor-primaria);
     color: #fff;
     font-weight: bold;
     border: none;
@@ -35,6 +35,18 @@ h2 {
     transition: background .2s;
   }
   button:hover {
-    background: #1565c0;
+    background: var(--cor-primaria-hover);
   }
   
+  .error-message {
+    color: #d32f2f;
+    font-size: 0.8rem;
+    margin-top: -0.8em;
+    margin-bottom: 0.5em;
+    text-align: left;
+  }
+  
+  button:disabled {
+    background-color: #bdbdbd;
+    cursor: not-allowed;
+  }

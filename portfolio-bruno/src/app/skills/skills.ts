@@ -1,12 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, QueryList, ViewChildren, NgZone } from '@angular/core';
 import { NgFor} from '@angular/common';
+import { SkillsService, Skill } from '../services/skills';
 
-interface Skill{
-  nome: string;
-  icone: string;
-  nivel: number;
-  label: string;
-}
+
 
 @Component({
   selector: 'app-skills',
@@ -14,13 +10,39 @@ interface Skill{
   templateUrl: './skills.html',
   styleUrl: './skills.css'
 })
-export class Skills {
+export class Skills implements OnInit, AfterViewInit{
 
-    skills: Skill[]=[
-        {nome: 'Angular', icone: 'https://img.icons8.com/color/48/000000/angularjs.png', nivel: 60, label: 'Em desenvolvimento'},
-        {nome: 'JavaScript', icone: 'https://img.icons8.com/color/48/000000/javascript--v1.png', nivel: 80, label: 'Avançado'},
-        {nome: 'TypeScript', icone: 'https://img.icons8.com/color/48/000000/typescript.png', nivel: 60, label: 'Em desenvolvimento'},
-        {nome: 'HTML', icone: 'https://img.icons8.com/color/48/000000/html-5--v1.png', nivel: 100, label: 'Avançado'},
-        {nome: 'CSS', icone: 'https://img.icons8.com/color/48/000000/css3.png', nivel: 70, label: 'Avançado'},
-    ];
+  skills: Skill[] = [];
+  
+  @ViewChildren('skillCard') skillCards!: QueryList<ElementRef>;
+
+  // 3. INJETE O SERVIÇO NO CONSTRUTOR
+  constructor(private skillsService: SkillsService, private zone: NgZone) {}
+
+  // 4. BUSQUE OS DADOS QUANDO O COMPONENTE INICIAR
+  ngOnInit(): void {
+    this.skills = this.skillsService.getSkills();
+  }
+   
+  ngAfterViewInit(): void {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 3. Encontre o índice do elemento que se tornou visível
+          const index = this.skillCards.toArray().findIndex(card => card.nativeElement === entry.target);
+          if (index !== -1) {
+            // 4. Rode a atualização de estado dentro do NgZone
+            this.zone.run(() => {
+              this.skills[index].isInView = true;
+            });
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    }, {
+      threshold: 0.3 // Reduzimos um pouco o threshold para disparar um pouco antes
+    });
+
+    this.skillCards.forEach(card => observer.observe(card.nativeElement));
+  }
 }

@@ -37,7 +37,7 @@
   (mouseenter)="cancelarFechamento()"
 >
   <div class="modal-video-content">
-    <video controls>
+    <video #videoPlayer autoplay muted loop>
       <source [src]="videoAtual" type="video/mp4" />
       Seu navegador não suporta o elemento de vídeo.
     </video>

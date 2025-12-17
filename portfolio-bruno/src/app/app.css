@@ -2,11 +2,11 @@ body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     background: #eff3f6;
-    color: #222;
+    color: var(--texto-primario);
   }
   
   nav {
-    background: #1976d2;
+    background: var(--cor-primaria);
     box-shadow: 0 2px 6px #0001;
   }
   .menu {
@@ -21,7 +21,7 @@ body {
     margin: 0;
   }
   .menu a {
-    color: #fff;
+    color: var(--cor-fundo-card);
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 3px;
@@ -29,7 +29,7 @@ body {
   }
   .menu a.ativo,
   .menu a:hover {
-    background: #1565c0;
+    background: var(--cor-primaria-hover);
     color: #fffde7;
   }
   
@@ -39,34 +39,34 @@ body {
   }
   .cabecalho h1 {
     font-size: 2.5rem;
-    color: #1976d2;
+    color: var(--cor-primaria); 
     margin: 0;
   }
   .cabecalho p {
     font-size: 1.2rem;
-    color: #444;
+    color: var(--cor-texto-secundario);
     margin-top: 0.5em;
   }
   
   main {
     max-width: 750px;
-    background: #fff;
+    background: var(--cor-fundo-card);
     margin: 0 auto;
     margin-bottom: 2rem;
     border-radius: 8px;
-    box-shadow: 0 4px 16px #0001;
+    box-shadow: 0 4px 16px var(--sombra-card);
     padding: 2.5rem 1.5rem;
   }
   
   footer {
-    background: #f3f7fa;
+    background: var(--cor-fundo);
     text-align: center;
     padding: 1rem 0;
     font-size: 0.98rem;
     color: #666;
   }
   footer a {
-    color: #1976d2;
+    color: var(--cor-primaria);
     text-decoration: underline;
     margin: 0 0.2em;
   }
@@ -76,3 +76,37 @@ body {
     margin-bottom: 10px;
   }
   
+/* Media Query para tablets e celulares (telas com até 768px de largura) */
+@media (max-width: 768px) {
+  .menu {
+    gap: 0.5rem; /* Diminui o espaço entre os itens do menu */
+    padding: 0.5rem;
+  }
+
+  .menu a {
+    padding: 0.5rem; /* Diminui o preenchimento dos links */
+    font-size: 0.9rem; /* Diminui a fonte do menu */
+  }
+
+  .cabecalho h1 {
+    font-size: 2rem; /* Diminui o título principal */
+  }
+
+  .cabecalho p {
+    font-size: 1rem; /* Diminui o subtítulo */
+  }
+
+  main {
+    /* Remove as margens laterais e o arredondamento em telas pequenas */
+    margin: 0;
+    margin-bottom: 2rem;
+    border-radius: 0;
+    padding: 2rem 1rem; /* Ajusta o preenchimento interno */
+  }
+
+  .btn-tema {
+    /* Reposiciona o botão de tema em telas menores */
+    top: 0.7rem;
+    right: 0.7rem;
+  }
+}

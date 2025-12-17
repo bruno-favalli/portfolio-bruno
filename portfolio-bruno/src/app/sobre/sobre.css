@@ -1,14 +1,67 @@
-h2 {
-    color: #1565c0;
-    margin-bottom: 1rem;
-    font-size: 2rem;
+/* src/app/sobre/sobre.css */
+
+.sobre-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo em telas menores */
+  justify-content: center; /* Centraliza o conteúdo quando a linha quebra */
+}
+
+.foto-container {
+  flex-shrink: 0; /* Impede que a imagem encolha */
+}
+
+.foto-perfil {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%; /* Deixa a foto redonda */
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+  border: 4px solid var(--cor-primaria);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.texto-container {
+  flex: 1;
+  min-width: 300px; /* Garante uma largura mínima para o texto */
+  text-align: left;
+}
+
+.texto-container h2 {
+  color: var(--cor-primaria-hover);
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.texto-container p {
+  color: var(--cor-texto-secundario);
+  line-height: 1.6;
+  font-size: 1.08rem;
+}
+
+.redes-sociais {
+  margin-top: 1.5rem;
+}
+
+.redes-sociais a {
+  color: var(--cor-primaria);
+  font-size: 2rem; /* Tamanho dos ícones */
+  margin-right: 1rem;
+  transition: color 0.2s;
+}
+
+.redes-sociais a:hover {
+  color: var(--cor-primaria-hover);
+}
+
+@media (max-width: 768px) {
+  .sobre-container {
+    flex-direction: column; /* Força a quebra para uma única coluna */
+    text-align: center;   /* Centraliza todo o texto */
+    gap: 1.5rem;
   }
-  p {
-    color: #333;
-    line-height: 1.5;
-    font-size: 1.08rem;
-    max-width: 600px;
-    text-align: center;
-    margin: 0 auto;
+
+  .texto-container {
+    text-align: center; /* Garante que o texto dentro do container também fique centralizado */
   }
-  
+}

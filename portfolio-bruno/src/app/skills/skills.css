@@ -18,7 +18,13 @@
     max-width: 200px;
     transition: transform 0.2s;
   }
-  
+  /* src/app/skills/skills.css */
+
+.skill-icon {
+  font-size: 48px; /* Controla o tamanho do ícone */
+  margin-bottom: 0.5em;
+  color: var(--cor-primaria); /* Cor do ícone */
+}
   .skill-card img {
     width: 48px;
     height: 48px;
@@ -26,7 +32,7 @@
   }
   .skill-nome {
     font-size: 1.12rem;
-    color: #1976d2;
+    color: var(--cor-primaria);
     font-weight: bold;
     margin-bottom: 0.9em;
   }
@@ -34,7 +40,7 @@
   .barra-nivel {
     width: 110px;
     height: 13px;
-    background: #e0e0e0;
+    background: var(--cor-texto-secundario);
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 0.5em;
@@ -42,9 +48,10 @@
   
   .barra-preenchida {
     height: 100%;
-    background: linear-gradient(90deg, #1976d2 60%, #53a9ff 100%);
+    background: linear-gradient(90deg, var(--cor-primaria) 60%, #53a9ff 100%);
     transition: width 0.8s;
     border-radius: 8px;
+    transition: width 0.8s ease-out;
   }
   
   .skill-info {
@@ -69,3 +76,14 @@
     box-shadow: 0 8px 24px #1976d215;
   }
   
+
+@media (max-width: 768px) {
+  .skills-list {
+    gap: 1rem; /* Diminui o espaço entre os cards de skills */
+  }
+
+  .skill-card {
+    padding: 1rem 1.5rem; /* Ajusta o preenchimento interno */
+    min-width: 130px;
+  }
+}

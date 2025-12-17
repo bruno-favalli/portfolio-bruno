@@ -1,11 +1,11 @@
 <h2>Meus Conhecimentos</h2>
 <div class="skills-list">
-  <div class="skill-card" *ngFor="let skill of skills">
-    <img [src]="skill.icone" [alt]="skill.nome"/>
+  <div class="skill-card" *ngFor="let skill of skills" #skillCard>
+    <i [class]="skill.icone" class="skill-icon"></i>
     <span class="skill-nome">{{ skill.nome }}</span>
 
     <div class="barra-nivel">
-      <div class="barra-preenchida" [style.width.%]="skill.nivel"></div>
+      <div class="barra-preenchida" [style.width.%]="skill.isInView ? skill.nivel : 0"></div>
     </div>
     <div class="skill-info">
       <span class="skill-label">{{ skill.label }}</span>

@@ -1,6 +1,6 @@
 <nav>
   <ul class="menu">
-    <li><a routerLink="/" routerLinkActive="ativo">Projetos</a></li>
+    <li><a routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions] = "{exact : true}">Projetos</a></li>
     <li><a routerLink="/sobre" routerLinkActive="ativo">Sobre</a></li>
     <li><a routerLink="/skills" routerLinkActive="ativo">Conhecimentos</a></li>
     <li><a routerLink="/contato" routerLinkActive="ativo">Contato</a></li>
@@ -8,6 +8,9 @@
 </nav>
 
 <header class="cabecalho">
+  <button (click)="toggleTema()" class="btn-tema">
+    <i class="bi" [ngClass]="temaAtual === 'dark' ? 'bi-sun-fill' : 'bi-moon-fill'"></i>
+  </button>
   <h1>Bruno Favalli</h1>
   <p>Desenvolvedor Front-end, criando meus primeiros projetos em Angular.</p>
 </header>
@@ -20,7 +23,7 @@
   <hr>
   <div>
     <span>Desenvolvido por Bruno Favalli • 2025</span><br>
-    <a href="https://github.com/seu-usuario" target="_blank" rel="noopener">GitHub</a> |
+    <a href="https://github.com/bruno-favalli" target="_blank" rel="noopener">GitHub</a> |
     <a href="https://linkedin.com/in/seu-usuario" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
